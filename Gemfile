@@ -17,9 +17,12 @@ gem "bootsnap", require: false
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'pagy', '~> 6.0', '>= 6.0.3'
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem "ffaker", "~> 2.21"
+gem "factory_bot", "~> 6.2", ">= 6.2.1"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails", "~> 6.0.0"
 end
 
 group :development do
