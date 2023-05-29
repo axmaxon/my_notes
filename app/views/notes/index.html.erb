@@ -1,6 +1,47 @@
-<h1>Notes</h1>
-<% @notes.each do |note| %>
-  <p>
-    <%= note.body %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-4 order-md-1 order-lg-2 text-center p">
+      <div class="text-center mb-4 note-title-container text-nowrap">
+        <span class="text-primary note-title-count"><%= @notes.count %></span>
+        <span class="note-title-text">notes</span>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-8 order-md-2 order-lg-1 ">
+      <div class="d-flex justify-content-center pagy-container">
+        <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+      </div>
+      <table class="table table-bordered notes-table">
+        <thead class="">
+        <tr class="">
+          <th class="line-number text-center" scope="col">#</th>
+          <th class="note-body text-center" scope="col">Note</th>
+          <th class="note-author text-center" scope="col">Author</th>
+          <th class="note-creation-date text-center" scope="col">Creation Date</th>
+          <th class="note-deletion text-center" scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody class="">
+        <% @notes.each do |note| %>
+          <tr class="note-table-body-row">
+            <th class="line-number text-center" scope="row"><%= note.line_number %></th>
+            <td class="note-body "><%= note.body %></td>
+            <td class="note-author text-center"><%= note.user.first_name %></td>
+            <td class="note-creation-date text-center"><%= note.created_at.strftime("%d.%m.%Y") %></td>
+            <td class="note-deletion text-center">
+              <%= link_to "", note, method: :delete, data: { turbo_method: :delete }, class: "bi bi-trash fa-lg note-del-pic", style: "font-size: 1.2rem" %>
+            </td>
+          </tr>
+        <% end %>
+        <% if user_signed_in? %>
+          <tr>
+            <td colspan="5"></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center pagy-container">
+        <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+      </div>
+    </div>
+  </div>
+</div>
