@@ -33,5 +33,9 @@ module MyNotes
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    if defined?(Rails::Server) && Rails.env.development?
+      require "debug/open_nonstop"
+    end
   end
 end
