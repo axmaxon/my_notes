@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12 col-lg-4 order-md-1 order-lg-2 text-center p">
       <div class="text-center mb-4 note-title-container text-nowrap">
-        <span class="text-primary note-title-count"><%= @notes.count %></span>
+        <span class="text-primary note-title-count"><%= @pagy.count %></span>
         <span class="note-title-text">notes</span>
       </div>
     </div>
@@ -34,7 +34,12 @@
         <% end %>
         <% if user_signed_in? %>
           <tr>
-            <td colspan="5"></td>
+            <td colspan="5" class="p-0">
+              <%= form_with(model: Note, data: { turbo_frame: "notes" }) do |form| %>
+                <%= form.text_field :body, placeholder: "WRITE A NEW NOTE", class: "w-100 border-0" %>
+                <%= form.submit "Save" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
