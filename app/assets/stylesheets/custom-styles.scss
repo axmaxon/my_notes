@@ -51,6 +51,10 @@ th.note-deletion {
   color: #3b444b;
 }
 
+.note-del-pic:hover {
+  color: #0f1012;
+}
+
 .navbar-brand {
   padding: 0;
 }
@@ -63,19 +67,4 @@ th.note-deletion {
 .note-title-text {
   font-size: 36px;
   color: #858585;
-}
-
-@media (min-width: 860px) {
-  .note-title-container {
-    padding: 80px;
-  }
-
-  .note-title-count {
-    //font-size: 72px;
-    font-size: 5rem;
-  }
-
-  .note-title-text {
-    font-size: 3rem;
-  }
 }
