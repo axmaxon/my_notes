@@ -3,3 +3,11 @@ en:
     notes:
       one: "1 note"
       other: "%{count} notes"
+
+  time:
+    formats:
+      default: "%I:%M %p"
+  date:
+    formats:
+      default: "%m/%d/%Y"
+

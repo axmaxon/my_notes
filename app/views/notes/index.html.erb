@@ -26,15 +26,50 @@
           <tr class="note-table-body-row">
             <th class="line-number text-center" scope="row"><%= note.line_number %></th>
             <td class="note-body "><%= note.body %></td>
-            <td class="note-author text-center"><%= note.user.first_name %></td>
-            <td class="note-creation-date text-center"><%= note.created_at.strftime("%d.%m.%Y") %></td>
-            <td class="note-deletion text-center">
-              <%= button_to note, method: :delete, data: { turbo_method: :delete }, class: "btn btn-link p-0", style: "font-size: 0;" do %>
-                <i class="bi bi-trash fa-lg note-del-pic" style="font-size: 1.2rem;"></i>
-              <% end %>
+
+            <td data-controller="popover" class="note-author text-center position-relative">
+              <span data-action="mouseenter->popover#show mouseleave->popover#hide">
+                <%= note.user.first_name %>
+              </span>
+              <template data-popover-target="content">
+                <div data-popover-target="card" class="custom-popover-styles">
+                  <span class="text-nowrap"><%= note.user.full_name %></span>
+                </div>
+              </template>
+            </td>
+
+            <td data-controller="popover" class="note-creation-date text-center position-relative">
+              <span data-action="mouseenter->popover#show mouseleave->popover#hide">
+                <%= note.created_at.strftime(t("date.formats.default")) %>
+              </span>
+              <template data-popover-target="content">
+                <div data-popover-target="card" class="custom-popover-styles">
+                  <span class="text-nowrap"><%= note.created_at.strftime(t("time.formats.default")) %></span>
+                </div>
+              </template>
+            </td>
+
+            <td data-controller="popover" class="note-deletion text-center position-relative">
+              <div data-action="mouseenter->popover#show mouseleave->popover#hide">
+                <% if author_and_signed_in?(note) %>
+                  <%= button_to note, method: :delete, data: { turbo_method: :delete }, class: "btn btn-link p-0", style: "font-size: 0;" do %>
+                    <i class="bi bi-trash fa-lg note-del-pic" style="font-size: 1.2rem;"></i>
+                  <% end %>
+                <% else %>
+                  <i class="bi bi-lock fa-lg note-lock-pic" style="font-size: 1.2rem;"></i>
+                <% end %>
+              </div>
+              <template data-popover-target="content">
+                <div data-popover-target="card" class="custom-popover-styles">
+                  <span class="text-nowrap">
+                    <%= author_and_signed_in?(note) ? "Delete" : "You can delete only your own note" %>
+                  </span>
+                </div>
+              </template>
             </td>
           </tr>
         <% end %>
+
         <% if user_signed_in? %>
           <tr>
             <td colspan="5" class="p-0">
