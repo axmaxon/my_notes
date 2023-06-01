@@ -17,6 +17,8 @@ gem "bootsnap", require: false
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'pagy', '~> 6.0', '>= 6.0.3'
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem "devise-i18n"
+gem "devise-bootstrap5"
 gem "ffaker", "~> 2.21"
 gem "factory_bot", "~> 6.2", ">= 6.2.1"
 
