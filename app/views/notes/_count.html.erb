@@ -1,0 +1,7 @@
+<div class="text-center mb-4 note-title-container text-nowrap">
+  <%# Something like: "1 note" or "17 notes"  %>
+  <% notes_count = pluralize(@pagy.count, 'notes').split(' ') %>
+
+  <span class="text-primary note-title-count"><%= notes_count[0] %></span>
+  <span class="note-title-text"><%= notes_count[1] %></span>
+</div>

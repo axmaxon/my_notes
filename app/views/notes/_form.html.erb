@@ -1,0 +1,10 @@
+<tr >
+  <td colspan="5" class="p-1">
+    <%= form_with(model: Note, html: { class: "d-flex flex-row align-items-center flex-wrap w-100" }) do |form| %>
+      <div class="mr-2 table-text-field-container">
+        <%= form.text_field :body, placeholder: "WRITE A NEW NOTE...", class: "form-control", required: true %>
+      </div>
+      <%= form.submit "Save", class: "btn btn-primary table-form-button" %>
+    <% end %>
+  </td>
+</tr>

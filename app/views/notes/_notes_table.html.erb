@@ -1,0 +1,21 @@
+<table class="table table-bordered notes-table w-100">
+  <thead>
+  <tr>
+    <th class="line-number text-center" scope="col">#</th>
+    <th class="note-body text-center" scope="col">Note</th>
+    <th class="note-author text-center" scope="col">Author</th>
+    <th class="note-creation-date text-center" scope="col">Creation Date</th>
+    <th class="note-deletion text-center" scope="col">Delete</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @notes.each do |note| %>
+    <%= render partial: "note", locals: { note: note } %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= render partial: "form" %>
+  <% end %>
+  </tbody>
+</table>
