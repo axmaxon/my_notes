@@ -1,5 +1,5 @@
 <div class="container mt-lg-5">
-  <%= turbo_frame_tag "main-frame" do %>
+  <%= turbo_frame_tag "main-frame", data: { turbo_action: "advance" } do %>
     <div id="flash" class="flash">
       <%= render partial: "shared/flash" %>
     </div>
