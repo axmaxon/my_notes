@@ -8,7 +8,6 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.build(note_params)
 
-    # turbo_stream.remove("flash") if request.xhr? && params[:page]
     if @note.save
       @notes = Note.all
       redirect_to root_path, notice: "Note created"
