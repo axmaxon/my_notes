@@ -10,7 +10,7 @@ class NotesController < ApplicationController
 
     if @note.save
       @notes = Note.all
-      redirect_to root_path, notice: "Note created"
+      redirect_to root_path, notice: 'Note created'
     else
       render :index, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.destroy
 
-    redirect_to root_path, notice: "Note removed"
+    redirect_to root_path, notice: 'Note removed'
   end
 
   private

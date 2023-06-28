@@ -1,4 +1,4 @@
-FactoryBot.definition_file_paths << "spec/factories"
+FactoryBot.definition_file_paths << 'spec/factories'
 FactoryBot.find_definitions
 
 # Create 5 users, each with 8 notes
